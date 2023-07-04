@@ -1,5 +1,7 @@
 // Where I get my pokemon information from https://pokedex.org/#/pokemon/3
 
+let pokemonRepository = (function() {
+
 let pokemonList = [
     {
         name: "Bulbasaur", 
@@ -17,11 +19,24 @@ let pokemonList = [
         type: "water"
     },
 ];
-pokemonList.forEach(function(pokemon) { 
+
+    function add(pokemon) {
+        pokemonList.push(pokemon);
+    }
+    function getAll() {
+        return pokemonList;
+    }
+    return {
+        add: add,
+        getAll: getAll
+    };
+})();
+
+pokemonRepository.getAll().forEach(function(pokemon) { 
         if (pokemon.height > 0.6) {
         document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' +' - Wow, that\'s big'+ '</p>');
         }
-        else {(pokemonList.height <= 0.6)
+        else {(pokemon.height <= 0.6)
         document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
     }
 });
