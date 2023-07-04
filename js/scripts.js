@@ -4,19 +4,19 @@ let pokemonRepository = (function() {
 
 let pokemonList = [
     {
-        name: "Bulbasaur", 
+        name: 'Bulbasaur', 
         height: 0.7, 
-        type: ["grass","poison"]
+        type: ['grass','poison']
     },
     {
         name: "Charmander", 
         height: 0.6, 
-        type: "fire"
+        type: 'fire'
     },
     {
-        name: "Squirtle", 
+        name: 'Squirtle', 
         height: 0.5, 
-        type: "water"
+        type: 'water'
     },
 ];
 
@@ -40,3 +40,6 @@ pokemonRepository.getAll().forEach(function(pokemon) {
         document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
     }
 });
+
+pokemonRepository.add({name: 'Pikachu', height: 0.4, type: 'electric'});
+console.log(pokemonRepository.getAll());
