@@ -26,19 +26,31 @@ let pokemonList = [
     function getAll() {
         return pokemonList;
     }
+    function addListItem(pokemon){
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('button-class');
+        button.addEventListener('click', function (showDetails) {
+             console.log(pokemon);
+        });
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+        
+    }
+    function showDetails(pokemon){
+        console.log('<p>' + 'height:' + pokemon.height + '</p>' + '<p>' + 'type' + pokemon.type + '</p>' )
+    }
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
     };
 })();
 
-pokemonRepository.getAll().forEach(function(pokemon) { 
-        if (pokemon.height > 0.6) {
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' +' - Wow, that\'s big'+ '</p>');
-        }
-        else {(pokemon.height <= 0.6)
-        document.write('<p>' + pokemon.name + ' (height: ' + pokemon.height + ')' + '</p>');
-    }
+pokemonRepository.getAll().forEach(function(pokemon) {
+   pokemonRepository.addListItem(pokemon);
 });
 
 pokemonRepository.add({name: 'Pikachu', height: 0.4, type: 'electric'});
